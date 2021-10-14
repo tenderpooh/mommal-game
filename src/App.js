@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import MommalPage from "./routes/MommalPage";
+import "./assets/css/main.css";
+import AdminPage from "./routes/AdminPage";
 
 function App() {
+  const theme = createTheme();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Router>
+        <Switch>
+          <Route path="/admin">
+            <AdminPage />
+          </Route>
+          <Route path="/">
+            <MommalPage />
+          </Route>
+        </Switch>
+      </Router>
+    </ThemeProvider>
   );
 }
 
